@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require(path)
+const path = require("path")
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -27,7 +27,7 @@ app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 
 app.use((req,res,next) => {
-    res.status(404).send('<b>Page not found, give up lmao</b>')
+    res.status(404).render('404')
 })
 
 app.listen(3000, () => {

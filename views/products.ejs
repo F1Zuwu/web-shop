@@ -1,0 +1,45 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    a,
+    btn,
+    p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+</style>
+
+<body style="margin: 0px;">
+    <%- include('./components/navbar.ejs'); %>
+
+        <div style="display:  flex; flex-wrap: wrap; gap: 10px; padding: 64px; justify-content: center;">
+            <% data.map((item)=> { %>
+                <div style="background-color: darksalmon; margin-left: 18px;margin-right: 18px; border-radius: 12px;">
+                    <h1 style="text-align: center; color: white;">
+                        <%= item.title %>
+                    </h1>
+
+                    <img style="width: 400px; height: 300px;" src=<%=item.imageUrl %> />
+                    <h1 style="text-align: center; color: white;">
+                        <%= item.price %>€
+                    </h1>
+                    <p style="text-align: center; color: white;">
+                        <%= item.description %>
+                    </p>
+                    <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+                        <button class="btn">Add to cart</button>
+                    </div>
+                </div>
+
+                <% }); %>
+        </div>
+</body>
