@@ -1,0 +1,50 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    a,
+    btn,
+    p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .input {
+        padding: 8px;
+        border-radius: 6px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        outline: none;
+        border: none;
+    }
+
+    .input:focus {
+        border: 3px rgb(236, 103, 63) solid;
+    }
+</style>
+
+<body style="margin: 0px;">
+    <%- include('./components/navbar.ejs'); %>
+
+        <div style="display:  flex; flex-wrap: wrap; gap: 10px; padding: 64px; justify-content: center;">
+            <form method="post" action="/admin/edit/<%= data.id %>" style="background-color: darksalmon; margin-top: 120px; border-radius: 12px; display:grid; padding: 24px; width: 33%;">
+                <input class="input" id="title" name="title" placeholder="Title" value=<%=data.title %> required />
+                <input class="input" id="price" name="price" placeholder="Price" value=<%=data.price %> required />
+                <input class="input" id="desc" name="description" placeholder="Description" value=<%=data.description %> required />
+                <input class="input" id="imageUrl" name="imageUrl" placeholder="imageURL" value=<%=data.imageUrl %> required />
+
+                <div style="display: flex; justify-content: center; margin-top: 12px;">
+                    <input class="btn" type="submit"></input>
+                    <button class="btn" style="margin-left:12px;" onclick="window.location.href = '/admin'">Cancel</button>
+                </div>
+            </form>
+        </div>
+</body>

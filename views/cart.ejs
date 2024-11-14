@@ -1,0 +1,85 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    a,
+    btn,
+    p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+
+    .btn-remove {
+
+        -webkit-transition-duration: 0.2s;
+        opacity: 0;
+        width: 0px;
+        position: absolute;
+        background-color: darksalmon;
+    }
+
+    .item-container:hover .btn-remove {
+        -webkit-transition-duration: 0.2s;
+        opacity: 1;
+        width: 140px;
+        position: initial;
+    }
+
+    .btn-remove:hover {
+        -webkit-transition-duration: 0.2s;
+        background-color: salmon;
+    }
+    
+</style>
+
+<body style="margin: 0px;">
+    <%- include('./components/navbar.ejs'); %>
+
+    <h1 style="margin-left: 64px;">Cart</h1>
+    <div style="background-color: rgba(0, 0, 0, 0.322); height: 1px; width: 100%;"></div>
+    <% if (items.length === 0) { %>
+    <p style="text-align: center;">Your cart is empty</p>
+    <% } else { %>
+
+    <% items.map((item)=> { %>
+        <div class="item-container" style="border-bottom:  3px solid black; display: flex; position: relative; height: 150px;">
+            <button onclick="RemoveItemFromCart('<%= item.id %>')" class="btn-remove" title="Remove item from cart" style="color: white; cursor: pointer; width: 140px; height: 100%; border-radius: 0px; border: none;"><h1>X</h1></button>
+            <div style="margin-top: 12px; margin-left: 36px;">
+            <h1><%= item.title %></h1>
+            <h3 style="margin-top: -16px;"><%= item.price %>€</h3>
+        </div>
+            <h1 style="position: absolute; right: 64px; top: 35px;"><%= item.quantity %>x</h1>
+        </div>
+    <% }); %>
+    <div style="position: absolute; right: 120px; justify-content: end; align-items: center; margin-top: 32px; background-color: darksalmon; border-radius: 12px; padding:12px; padding-left: 24px; padding-right: 24px; padding-bottom: 24px;">
+        <h1 style="color: white;">Total: <%= total %>€</h1>
+        <button onclick="Buy()" style="margin-top: -12px; cursor: pointer;" class="btn">Purchase</button>
+    </div>
+<% } %>
+</body>
+
+<script>
+    const Buy = () => {
+        fetch("/cart/clear",
+            {
+                method: "DELETE"
+            }
+        ).then(() => {
+            alert("Items bought sucessfully")
+            window.location.reload()
+        })
+    }
+
+    const RemoveItemFromCart = (id) => {
+        fetch(`/cart/remove/${id}`,{method: "DELETE"}).then(() => window.location.reload())
+    }
+</script>

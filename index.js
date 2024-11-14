@@ -10,14 +10,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 const db = require('./utils/db')
 
-db.execute('SHOW DATABASES')
-    .then(result => {
-        console.log(result)
-    })
-    .catch(error => {
-        console.log(error)
-    })
-
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 

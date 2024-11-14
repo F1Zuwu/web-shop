@@ -23,25 +23,25 @@
 
         <h1 style="margin-left: 120px;">Latest</h1>
         <div style="display:  flex; flex-wrap: wrap; gap: 10px; padding: 64px; justify-content: center;">
-        <% latest.map((item)=> { %>
-            <div style="background-color: darksalmon; margin-left: 18px;margin-right: 18px; border-radius: 12px;">
-                <h1 style="text-align: center; color: white;">
-                    <%= item.title %>
-                </h1>
+            <% latest.map((item)=> { %>
+                <div style="background-color: darksalmon; margin-left: 18px;margin-right: 18px; border-radius: 12px;">
+                    <h1 style="text-align: center; color: white;">
+                        <%= item.title %>
+                    </h1>
 
-                <img style="width: 400px; height: 300px;" src=<%=item.imageUrl %> />
-                <h1 style="text-align: center; color: white;">
-                    <%= item.price %>€
-                </h1>
-                <p style="text-align: center; color: white;">
-                    <%= item.description %>
-                </p>
-                <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-                    <button class="btn">Add to cart</button>
+                    <img style="width: 400px; height: 300px;" src=<%=item.imageUrl %> />
+                    <h1 style="text-align: center; color: white;">
+                        <%= item.price %>€
+                    </h1>
+                    <p style="text-align: center; color: white;">
+                        <%= item.description %>
+                    </p>
+                    <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+                        <button class="btn" onclick="addToCart('<%= item.id %>')">Add to cart</button>
+                    </div>
                 </div>
-            </div>
 
-            <% }); %>
+                <% }); %>
         </div>
         <h1 style="margin-left: 120px;">All Products</h1>
         <div style="display:  flex; flex-wrap: wrap; gap: 10px; padding: 64px; justify-content: center;">
@@ -59,10 +59,17 @@
                         <%= item.description %>
                     </p>
                     <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-                        <button class="btn">Add to cart</button>
+                        <button class="btn" onclick="addToCart('<%= item.id %>')">Add to cart</button>
                     </div>
                 </div>
 
                 <% }); %>
         </div>
 </body>
+
+<script>
+    const addToCart = (id) => {
+        fetch(`/cart/add/${id}/1`, { method: "POST" }).then(() => alert("Added item to cart")).catch(() => alert("not ok"))
+
+    }
+</script>

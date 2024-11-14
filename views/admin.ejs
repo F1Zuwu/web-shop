@@ -19,7 +19,14 @@
 </style>
 
 <body style="margin: 0px;">
-    <%- include('./components/navbar.ejs'); %>
+    <%- include('./components/AdminNavbar.ejs'); %>
+
+
+        <h1 style="text-align: center;">Admin view</h1>
+        <div style="display: flex; justify-content: center;">
+            <button class="btn">Add Product</button>
+        </div>
+
 
         <div style="display:  flex; flex-wrap: wrap; gap: 10px; padding: 64px; justify-content: center;">
             <% data.map((item)=> { %>
@@ -36,7 +43,7 @@
                         <%= item.description %>
                     </p>
                     <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-                        <button class="btn">Add to cart</button>
+                        <a style="margin-left: 6px;" href="/admin/edit/<%= item.id %>" class="btn">Edit</a>
                         <button style="margin-left: 6px;" class="btn" onclick="DeleteProduct('<%= item.id %>')">Delete</button>
                     </div>
                 </div>
