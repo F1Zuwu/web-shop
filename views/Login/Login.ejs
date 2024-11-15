@@ -1,0 +1,64 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    a,
+    btn,
+    p,
+    input {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    h1,
+    h2,
+    h3,
+    label {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .input {
+        -webkit-transition-duration: 0.2s;
+        padding: 8px;
+        border-radius: 6px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        outline: none;
+        border: none;
+        border: 1px black solid;
+    }
+
+    .input:focus {
+        -webkit-transition-duration: 0.2s;
+        border: 3px rgb(236, 103, 63) solid;
+    }
+
+    .btna:hover {
+        -webkit-transition-duration: 0.2s;
+        border: 3px rgb(236, 103, 63) solid;
+    }
+
+    .btna:hover {
+        -webkit-transition-duration: 0.2s;
+        border: 3px rgb(236, 103, 63) solid;
+    }
+</style>
+
+<body style="margin: 0px;">
+    
+    <%- include('../components/navbar.ejs'); %>
+
+    <h1 style="text-align: center;">Login</h1>
+    <div style="display: flex; justify-content: center;">
+      <form style="display:grid; width: 33.3%; padding: 16px; border-radius: 12px; border: 3px solid rgb(248, 188, 170); box-shadow: 12px;">
+        <label for="Email">Email</label>
+        <input class="input" placeholder="Email" name="Email" type="email"/>
+        <label for="Password">Email</label>
+        <input class="input" type="password" placeholder="Password" name="Password"/>
+
+        <input class="btna" style="padding: 8px; border-radius: 8px; background-color: transparent;" type="submit" />
+      </form>
+    </div>
+</body>
