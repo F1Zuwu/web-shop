@@ -62,14 +62,21 @@
     <% }); %>
     <div style="position: absolute; right: 120px; justify-content: end; align-items: center; margin-top: 32px; background-color: darksalmon; border-radius: 12px; padding:12px; padding-left: 24px; padding-right: 24px; padding-bottom: 24px;">
         <h1 style="color: white;">Total: <%= total %>€</h1>
-        <button onclick="Buy()" style="margin-top: -12px; cursor: pointer;" class="btn">Purchase</button>
+        <form action="/orders" method="post">
+            <input name="items" type="hidden" value="<%= JSON.stringify(items) %>"></input>
+            <input id="order-form" name="user" type="hidden"></input>
+           <input type="submit"  style="margin-top: -12px; cursor: pointer;" class="btn" value="Purchase"></input>
+        </form>
     </div>
 <% } %>
 </body>
 
 <script>
-    const Buy = () => {
-        fetch("/cart/clear",
+    window.onload = () => {
+        document.getElementById("order-form").value = localStorage.getItem("user");
+    }
+    const Buy = (items) => {
+        fetch("/cart/clear/" + localStorage.getItem("user"),
             {
                 method: "DELETE"
             }
@@ -80,6 +87,6 @@
     }
 
     const RemoveItemFromCart = (id) => {
-        fetch(`/cart/remove/${id}`,{method: "DELETE"}).then(() => window.location.reload())
+        fetch(`/cart/remove/${id}/${localStorage.getItem("user")}`,{method: "DELETE"}).then(() => window.location.reload())
     }
 </script>

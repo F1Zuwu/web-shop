@@ -1,0 +1,16 @@
+<body>
+    <h1>orders</h1>
+
+    <div>
+        <% data.map((item)=> { %>
+            <div class="item-container" style="border-bottom:  3px solid black; display: flex; position: relative; height: 150px;">
+                <button onclick="RemoveItemFromCart('<%= item.id %>')" class="btn-remove" title="Remove item from cart" style="color: white; cursor: pointer; width: 140px; height: 100%; border-radius: 0px; border: none;"><h1>X</h1></button>
+                <div style="margin-top: 12px; margin-left: 36px;">
+                <h1><%= item.title %></h1>
+                <h3 style="margin-top: -16px;"><%= item.price %>€</h3>
+            </div>
+                <h1 style="position: absolute; right: 64px; top: 35px;"><%= item.quantity %>x</h1>
+            </div>
+        <% }); %>
+    </div>
+</body>

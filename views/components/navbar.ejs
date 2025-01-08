@@ -19,12 +19,19 @@
     }
 </style>
 
+<script>
+    window.onload = () => {
+    const uid = localStorage.getItem("user")
+    document.getElementById('cart-link').href = '/cart/' + uid;
+}
+</script>
+
 <div style="display: flex; align-items: center; background-color: darksalmon;">
     <h1 style="padding-left: 48px; color: white;">E-POOD</h1>
     <div style="position: absolute; right: 48px;">
         <a href="/" class="btn">Shop</a>
         <a href="/products" class="btn">Products</a>
-        <a href="/cart" class="btn">Cart<a>
+        <a id="cart-link" href='/cart/' class="btn">Cart<a>
         <a href="/admin/" class="btn">Admin View</a>
     </div>
 </div>

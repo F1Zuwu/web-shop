@@ -81,4 +81,11 @@ router.delete('/delete/:id', (req, res, next) => {
     });
 })
 
+router.get("/orders/:id" ,(req,res) => {
+    pool.execute("SELECT * FROM orders WHERE user_id = ?", [req.params.id] , (_, data) => {
+        console.log(data)
+        res.render("admin/orders", { data: data })
+    })
+})
+
 module.exports = router;

@@ -18,6 +18,16 @@
     }
 </style>
 
+<script>
+    if (!localStorage.getItem("user")) {
+        localStorage.setItem("user", crypto.randomUUID())
+    }
+
+    function getUserId() {
+      return localStorage.getItem("user_id")
+    }
+</script>
+
 <body style="margin: 0px;">
     <%- include('./components/navbar.ejs'); %>
 
@@ -69,7 +79,7 @@
 
 <script>
     const addToCart = (id) => {
-        fetch(`/cart/add/${id}/1`, { method: "POST" }).then(() => alert("Added item to cart")).catch(() => alert("not ok"))
+        fetch(`/cart/add/${id}/1/${localStorage.getItem("user")}`, { method: "POST" }).then(() => alert("Added item to cart")).catch(() => alert("not ok"))
 
     }
 </script>

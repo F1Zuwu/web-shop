@@ -18,12 +18,18 @@
         border: #FFF solid 1px;
     }
 </style>
-
+<script>
+    window.onload = () => {
+    const uid = localStorage.getItem("user")
+    document.getElementById('orders-link').href = '/admin/orders/' + uid;
+}
+</script>
 <div style="display: flex; align-items: center; background-color: darksalmon;">
     <h1 style="padding-left: 48px; color: white;">E-POOD</h1>
     <div style="position: absolute; right: 48px;">
         <a href="/admin/" class="btn">Products</a>
         <a href="/admin/add-product" class="btn">Add Product</a>
+        <a id="orders-link" href="" class="btn">Orders</a>
         <a href="/" class="btn">User View</a>
     </div>
 </div>
